@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35312.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinearDataStructures.Logic", "LinearDataStructures.Logic\LinearDataStructures.Logic.csproj", "{4766B326-A2BD-4DF0-B874-B8C109027F7B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinearDataStructures.UnitTest", "LinearDataStructures.UnitTest\LinearDataStructures.UnitTest.csproj", "{F60CD452-3F16-4EFD-975F-BD192266EA75}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4766B326-A2BD-4DF0-B874-B8C109027F7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4766B326-A2BD-4DF0-B874-B8C109027F7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4766B326-A2BD-4DF0-B874-B8C109027F7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4766B326-A2BD-4DF0-B874-B8C109027F7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F60CD452-3F16-4EFD-975F-BD192266EA75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F60CD452-3F16-4EFD-975F-BD192266EA75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F60CD452-3F16-4EFD-975F-BD192266EA75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F60CD452-3F16-4EFD-975F-BD192266EA75}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6C9D740D-E671-47C3-B020-C3C846EAC720}
+	EndGlobalSection
+EndGlobal
