@@ -13,7 +13,7 @@ namespace LinearDataStructures.Logic
         /// <param name="next">The next element in the linked list, or <c>null</c> if there is no next element.</param>
         public Element(T value, Element<T>? next)
         {
-            Value = value;
+            Data = value;
             Next = next;
         }
         /// <summary>
@@ -22,7 +22,7 @@ namespace LinearDataStructures.Logic
         /// <value>
         /// The value of type <typeparamref name="T"/>.
         /// </value>
-        public T Value { get; set; }
+        public T Data { get; set; }
         /// <summary>
         /// Gets or sets the next element in a linked structure.
         /// </summary>

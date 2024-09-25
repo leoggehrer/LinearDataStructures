@@ -51,7 +51,7 @@ namespace LinearDataStructures.Logic
                 throw new InvalidOperationException("The stack is empty.");
             }
 
-            return _top!.Value;
+            return _top!.Data;
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace LinearDataStructures.Logic
                 throw new InvalidOperationException("The stack is empty.");
             }
 
-            T value = _top!.Value;
+            T value = _top!.Data;
 
             _top = _top!.Next;
             return value;

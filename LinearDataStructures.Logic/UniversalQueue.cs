@@ -7,8 +7,8 @@ namespace LinearDataStructures.Logic
     internal class UniversalQueue<T> : IUniversalQueue<T>
     {
         #region fields
-        private Element<T>? _top = null;
-        private Element<T>? _bottom = null;
+        private Element<T>? _first = null;
+        private Element<T>? _last = null;
         #endregion fields
 
         #region properties
@@ -22,7 +22,7 @@ namespace LinearDataStructures.Logic
         {
             get
             {
-                return _top == null;
+                return _first == null;
             }
         }
         /// <summary>
@@ -40,7 +40,7 @@ namespace LinearDataStructures.Logic
             get
             {
                 int result = 0;
-                Element<T>? current = _top;
+                Element<T>? current = _first;
 
                 while (current != null)
                 {
@@ -59,8 +59,8 @@ namespace LinearDataStructures.Logic
         /// </summary>
         public void Clear()
         {
-            _top = null;
-            _bottom = null;
+            _first = null;
+            _last = null;
         }
 
         /// <summary>
@@ -74,17 +74,17 @@ namespace LinearDataStructures.Logic
         /// </exception>
         public T Dequeue()
         {
-            if (_top == null)
+            if (_first == null)
             {
                 throw new System.InvalidOperationException("The queue is empty.");
             }
 
-            T value = _top.Value;
+            T value = _first.Data;
 
-            _top = _top.Next;
-            if (_top == null)
+            _first = _first.Next;
+            if (_first == null)
             {
-                _bottom = null;
+                _last = null;
             }
             return value;
         }
@@ -99,15 +99,15 @@ namespace LinearDataStructures.Logic
         /// </remarks>
         public void Enqueue(T item)
         {
-            if (_top == null)
+            if (_first == null)
             {
-                _top = new Element<T>(item, null);
-                _bottom = _top;
+                _first = new Element<T>(item, null);
+                _last = _first;
             }
             else
             {
-                _bottom!.Next = new Element<T>(item, null);
-                _bottom = _bottom!.Next;
+                _last!.Next = new Element<T>(item, null);
+                _last = _last!.Next;
             }
         }
 
@@ -124,7 +124,7 @@ namespace LinearDataStructures.Logic
                 throw new InvalidOperationException("The queue is empty.");
             }
 
-            return _top!.Value;
+            return _first!.Data;
         }
 
         /// <summary>
@@ -143,12 +143,12 @@ namespace LinearDataStructures.Logic
                 throw new InvalidOperationException("The stack is empty.");
             }
 
-            T value = _top!.Value;
+            T value = _first!.Data;
 
-            _top = _top!.Next;
-            if (_top == null)
+            _first = _first!.Next;
+            if (_first == null)
             {
-                _bottom = null;
+                _last = null;
             }
             return value;
         }
@@ -162,10 +162,10 @@ namespace LinearDataStructures.Logic
         /// </remarks>
         public void Push(T item)
         {
-            _top = new Element<T>(item, _top);
-            if (_bottom == null)
+            _first = new Element<T>(item, _first);
+            if (_last == null)
             {
-                _bottom = _top;
+                _last = _first;
             }
         }
         #endregion methods
