@@ -5,9 +5,9 @@ using LinearDataStructures.Logic;
 namespace LinearDataStructures.UnitTest
 {
     /// <summary>
-    /// Contains unit tests for the <see cref="IUniversalQueue{T}"/> interface implementation.
-    /// This class tests various functionalities of the universal queue, including
-    /// enqueueing, dequeueing, pushing, popping, and checking the state of the queue.
+    /// Unit tests for the <see cref="IUniversalQueue{T}"/> implementation.
+    /// This class contains tests to verify the functionality of the Universal Queue,
+    /// including operations such as Enqueue, Dequeue, Push, Pop, and Peek.
     /// </summary>
     [TestClass]
     public class UniversalQueueUnitTests
@@ -17,7 +17,7 @@ namespace LinearDataStructures.UnitTest
         /// <summary>
         /// Creates a new instance of a universal queue.
         /// </summary>
-        /// <typeparam name="T">The type of elements in the universal queue.</typeparam>
+        /// <typeparam name="T">The type of elements held in the queue.</typeparam>
         /// <returns>An instance of <see cref="IUniversalQueue{T}"/> containing the specified type.</returns>
         private static IUniversalQueue<T> CreateUniversalQueue<T>()
         {
@@ -25,8 +25,8 @@ namespace LinearDataStructures.UnitTest
         }
 
         /// <summary>
-        /// Initializes the test environment before each test method is run.
-        /// This method sets up a universal queue for integer values.
+        /// Initializes the test environment before each test method is executed.
+        /// This method sets up a universal queue of integers.
         /// </summary>
         [TestInitialize]
         public void SetUp()
@@ -36,15 +36,13 @@ namespace LinearDataStructures.UnitTest
 
         // 1. Test IsEmpty when queue is newly created
         /// <summary>
-        /// Tests that a newly created queue is empty.
+        /// Tests that a newly instantiated queue is empty.
         /// </summary>
         /// <remarks>
-        /// This test verifies that the <see cref="_queue"/> has its <see cref="IsEmpty"/> property set to true
-        /// when the queue is instantiated and has not yet had any items added to it.
+        /// This test method verifies that the <see cref="_queue"/> instance has its <see cref="IsEmpty"/>
+        /// property set to true when the queue is first created. It asserts that the queue's state
+        /// reflects that it contains no elements.
         /// </remarks>
-        /// <exception cref="AssertFailedException">
-        /// Thrown when the <see cref="_queue.IsEmpty"/> property does not return true.
-        /// </exception>
         [TestMethod]
         public void IsEmpty_ShouldBeTrue_WhenQueueIsNew()
         {
@@ -56,9 +54,8 @@ namespace LinearDataStructures.UnitTest
         /// Tests that the <see cref="_queue"/> is not empty after an item is enqueued.
         /// </summary>
         /// <remarks>
-        /// This test method enqueues an integer value (1) into the queue and asserts that
-        /// the <see cref="IsEmpty"/> property returns false, indicating that the queue
-        /// contains at least one item.
+        /// This test method enqueues an integer value (1) into the queue and asserts that the
+        /// <see cref="IsEmpty"/> property returns <c>false</c>, indicating that the queue contains elements.
         /// </remarks>
         [TestMethod]
         public void IsEmpty_ShouldBeFalse_AfterEnqueue()
@@ -69,13 +66,14 @@ namespace LinearDataStructures.UnitTest
 
         // 3. Test Count when queue is newly created
         /// <summary>
-        /// Verifies that the count of items in a newly instantiated queue is zero.
+        /// Verifies that the count of the queue is zero when the queue is newly instantiated.
         /// </summary>
         /// <remarks>
-        /// This test method checks the initial state of the queue to ensure that it is empty
-        /// upon creation. It asserts that the <see cref="_queue.Count"/> property returns 0
-        /// when the queue has just been initialized.
+        /// This test method checks the initial state of the queue to ensure that it is empty.
         /// </remarks>
+        /// <exception cref="AssertFailedException">
+        /// Thrown if the count of the queue is not equal to zero.
+        /// </exception>
         [TestMethod]
         public void Count_ShouldBeZero_WhenQueueIsNew()
         {
@@ -84,12 +82,12 @@ namespace LinearDataStructures.UnitTest
 
         // 4. Test Count after Enqueue
         /// <summary>
-        /// Tests that the count of the queue increases by one after an item is enqueued.
+        /// Tests that the count of the queue increases after an item is enqueued.
         /// </summary>
         /// <remarks>
-        /// This test method enqueues a single integer item (1) into the queue
-        /// and asserts that the count of the queue is equal to 1, verifying
-        /// that the enqueue operation is functioning as expected.
+        /// This test verifies that when an integer is added to the queue using the
+        /// <see cref="Queue{T}.Enqueue(T)"/> method, the <see cref="Queue{T}.Count"/>
+        /// property reflects the correct number of items in the queue.
         /// </remarks>
         [TestMethod]
         public void Count_ShouldIncrease_AfterEnqueue()
@@ -103,8 +101,8 @@ namespace LinearDataStructures.UnitTest
         /// Tests that the <see cref="Queue{T}.Dequeue"/> method returns the first item that was enqueued.
         /// </summary>
         /// <remarks>
-        /// This test enqueues two integers (1 and 2) into the queue and then dequeues an item.
-        /// It asserts that the first dequeued item is equal to the first enqueued item (1).
+        /// This test enqueues two items (1 and 2) into the queue and then dequeues one item.
+        /// It asserts that the dequeued item is equal to the first enqueued item (1).
         /// </remarks>
         [TestMethod]
         public void Dequeue_ShouldReturnFirstEnqueuedItem()
@@ -116,11 +114,11 @@ namespace LinearDataStructures.UnitTest
 
         // 6. Test Dequeue removes the first item
         /// <summary>
-        /// Tests the <see cref="Queue{T}.Dequeue"/> method to ensure that it removes the first item from the queue.
+        /// Tests the <see cref="Queue{T}.Dequeue"/> method to ensure that it correctly removes the first item from the queue.
         /// </summary>
         /// <remarks>
-        /// This test enqueues two items (1 and 2) into the queue, then calls the <see cref="Queue{T}.Dequeue"/> method.
-        /// It verifies that the count of the queue is 1 after the dequeue operation and that the next item to be dequeued is 2.
+        /// This test enqueues two items (1 and 2), then dequeues the first item.
+        /// It asserts that the queue count is reduced to 1 and that the next item in the queue is 2.
         /// </remarks>
         [TestMethod]
         public void Dequeue_ShouldRemoveFirstItem()
@@ -134,13 +132,13 @@ namespace LinearDataStructures.UnitTest
 
         // 7. Test Dequeue on empty queue throws exception
         /// <summary>
-        /// Tests that an <see cref="InvalidOperationException"/> is thrown when attempting to dequeue
-        /// an element from an empty queue.
+        /// Tests that an <see cref="InvalidOperationException"/> is thrown when attempting to dequeue an item
+        /// from an empty queue.
         /// </summary>
         /// <remarks>
         /// This method is marked with the <see cref="TestMethodAttribute"/> to indicate that it is a unit test.
-        /// It is also marked with the <see cref="ExpectedExceptionAttribute"/> to specify that an
-        /// <see cref="InvalidOperationException"/> is expected to be thrown during its execution.
+        /// The <see cref="ExpectedExceptionAttribute"/> specifies that an exception of type <see cref="InvalidOperationException"/>
+        /// is expected to be thrown during the execution of this test.
         /// </remarks>
         [TestMethod]
         [ExpectedException(typeof(InvalidOperationException))]
@@ -151,11 +149,11 @@ namespace LinearDataStructures.UnitTest
 
         // 8. Test Clear should make queue empty
         /// <summary>
-        /// Tests the <see cref="Queue{T}.Clear"/> method to ensure it empties the queue.
+        /// Tests that the <see cref="_queue"/> is empty after calling the <see cref="Clear"/> method.
         /// </summary>
         /// <remarks>
-        /// This test enqueues two items into the queue, invokes the <see cref="Queue{T}.Clear"/> method,
-        /// and asserts that the queue is empty and its count is zero.
+        /// This test enqueues two items into the queue, invokes the <see cref="Clear"/> method,
+        /// and then asserts that the queue is empty and its count is zero.
         /// </remarks>
         [TestMethod]
         public void Clear_ShouldMakeQueueEmpty()
@@ -174,12 +172,8 @@ namespace LinearDataStructures.UnitTest
         /// <remarks>
         /// This test method enqueues three integers (1, 2, and 3) into the queue and then dequeues them,
         /// asserting that they are returned in the same order they were added.
+        /// The expected sequence of dequeued values is 1, 2, and 3.
         /// </remarks>
-        /// <example>
-        /// <code>
-        /// EnqueueAndDequeue_ShouldWorkInFIFOOrder();
-        /// </code>
-        /// </example>
         [TestMethod]
         public void EnqueueAndDequeue_ShouldWorkInFIFOOrder()
         {
@@ -193,10 +187,12 @@ namespace LinearDataStructures.UnitTest
 
         // 10. Test Push adds item to the front of the queue (Stack behavior)
         /// <summary>
-        /// Tests that the <see cref="_queue"/> correctly adds an item to the front when the <see cref="Push"/> method is called.
+        /// Tests the <see cref="Queue{T}.Push(T)"/> method to ensure that
+        /// items are added to the front of the queue.
         /// </summary>
         /// <remarks>
-        /// This test pushes two integers onto the queue and verifies that the most recently added item (2) is at the front of the queue.
+        /// This test pushes two integers onto the queue and verifies
+        /// that the item at the front of the queue is the last item pushed.
         /// </remarks>
         [TestMethod]
         public void Push_ShouldAddItemToFront()
@@ -208,12 +204,13 @@ namespace LinearDataStructures.UnitTest
 
         // 11. Test Pop removes the item at the front (LIFO behavior)
         /// <summary>
-        /// Tests that the <see cref="_queue.Pop()"/> method removes the front item from the queue in a Last In, First Out (LIFO) order.
+        /// Tests the <see cref="Queue{T}.Pop"/> method to ensure it removes the front item
+        /// in a Last In, First Out (LIFO) order.
         /// </summary>
         /// <remarks>
-        /// This test first pushes two items onto the queue (1 and 2).
-        /// It then verifies that calling <see cref="_queue.Pop()"/> returns the last item pushed (2),
-        /// and subsequently checks that the next item in the queue (the front item) is now 1 using <see cref="_queue.Peek()"/>.
+        /// This test pushes two integers onto the queue and then pops the top item.
+        /// It asserts that the popped item is the last item pushed, and that the next item
+        /// in the queue is the first item that was pushed.
         /// </remarks>
         [TestMethod]
         public void Pop_ShouldRemoveFrontItem_LIFOOrder()
@@ -226,12 +223,12 @@ namespace LinearDataStructures.UnitTest
 
         // 12. Test Pop on empty queue throws exception
         /// <summary>
-        /// Tests that an <see cref="InvalidOperationException"/> is thrown when attempting to pop an item from an empty queue.
+        /// Tests that the <see cref="Queue{T}.Pop"/> method throws an <see cref="InvalidOperationException"/>
+        /// when attempting to pop an item from an empty queue.
         /// </summary>
-        /// <remarks>
-        /// This test method verifies the behavior of the <see cref="Queue{T}.Pop"/> method when the queue is empty.
-        /// It expects an <see cref="InvalidOperationException"/> to be thrown, indicating that the operation is not valid.
-        /// </remarks>
+        /// <exception cref="InvalidOperationException">
+        /// Thrown when the queue is empty and a pop operation is attempted.
+        /// </exception>
         [TestMethod]
         [ExpectedException(typeof(InvalidOperationException))]
         public void Pop_ShouldThrowException_WhenQueueIsEmpty()
@@ -241,13 +238,13 @@ namespace LinearDataStructures.UnitTest
 
         // 13. Test Peek returns item at the front without removing it
         /// <summary>
-        /// Tests the <see cref="Queue{T}.Peek"/> method to ensure that it returns the front item
+        /// Tests the <see cref="Queue{T}.Peek"/> method to ensure it returns the front item
         /// of the queue without removing it.
         /// </summary>
         /// <remarks>
-        /// This test enqueues a single item (1) into the queue and verifies that calling
-        /// <see cref="Queue{T}.Peek"/> returns the expected item without modifying the queue's state.
-        /// The test checks that the item remains in the queue after the peek operation.
+        /// This test enqueues an item (1) into the queue and verifies that the
+        /// <see cref="Queue{T}.Peek"/> method returns the correct value (1)
+        /// without altering the state of the queue.
         /// </remarks>
         [TestMethod]
         public void Peek_ShouldReturnFrontItemWithoutRemovingIt()
@@ -259,12 +256,13 @@ namespace LinearDataStructures.UnitTest
 
         // 14. Test Peek on empty queue throws exception
         /// <summary>
-        /// Tests that an <see cref="InvalidOperationException"/> is thrown when attempting to peek at an empty queue.
+        /// Tests that an <see cref="InvalidOperationException"/> is thrown when attempting to
+        /// peek at an element in an empty queue.
         /// </summary>
         /// <remarks>
-        /// This test method verifies the behavior of the <see cref="Queue{T}.Peek"/> method
-        /// when the queue has no elements. It is expected to throw an <see cref="InvalidOperationException"/>
-        /// to indicate that the operation cannot be performed on an empty queue.
+        /// This test method verifies that the <see cref="Queue{T}.Peek"/> method correctly
+        /// throws an <see cref="InvalidOperationException"/> when the queue is empty.
+        /// It is expected that the queue has no elements at the time of the call.
         /// </remarks>
         [TestMethod]
         [ExpectedException(typeof(InvalidOperationException))]
@@ -275,12 +273,11 @@ namespace LinearDataStructures.UnitTest
 
         // 15. Test Count increases after multiple Push operations
         /// <summary>
-        /// Verifies that the count of the queue increases correctly after multiple push operations.
+        /// Tests that the count of the queue increases correctly after multiple push operations.
         /// </summary>
         /// <remarks>
-        /// This test method pushes three integers onto the queue and asserts that the count of items
-        /// in the queue is equal to three. It ensures that the <see cref="_queue.Push(int)"/> method
-        /// functions as expected by modifying the count of the queue.
+        /// This test method pushes three elements onto the queue and verifies that the
+        /// count of the queue is equal to three after the operations.
         /// </remarks>
         [TestMethod]
         public void Count_ShouldIncrease_AfterMultiplePushes()
@@ -296,8 +293,8 @@ namespace LinearDataStructures.UnitTest
         /// Tests that the count of the queue decreases after multiple pop operations.
         /// </summary>
         /// <remarks>
-        /// This test method pushes two elements onto the queue, then pops one element off.
-        /// It asserts that the count of the queue is equal to 1 after the pop operation.
+        /// This test pushes two items onto the queue and then pops one item,
+        /// verifying that the count of the queue is equal to 1 after the operation.
         /// </remarks>
         [TestMethod]
         public void Count_ShouldDecrease_AfterMultiplePops()
@@ -310,13 +307,14 @@ namespace LinearDataStructures.UnitTest
 
         // 17. Test Enqueue followed by Peek and Dequeue
         /// <summary>
-        /// Tests the functionality of enqueueing, peeking, and dequeueing elements in a queue.
+        /// Tests the functionality of the Enqueue, Peek, and Dequeue methods
+        /// of the queue to ensure they work correctly.
         /// </summary>
         /// <remarks>
-        /// This test method verifies that after adding elements to the queue,
-        /// the first element can be correctly peeked and dequeued,
-        /// followed by the next element. It ensures that the queue behaves
-        /// according to FIFO (First In, First Out) principles.
+        /// This test checks that after enqueuing two integers (1 and 2):
+        /// 1. The Peek method returns the first element (1).
+        /// 2. The Dequeue method removes and returns the first element (1).
+        /// 3. The Dequeue method then removes and returns the next element (2).
         /// </remarks>
         [TestMethod]
         public void Enqueue_Peek_Dequeue_ShouldWorkCorrectly()
@@ -330,11 +328,12 @@ namespace LinearDataStructures.UnitTest
 
         // 18. Test Push and Pop operations in LIFO order
         /// <summary>
-        /// Tests that the <see cref="_queue"/> operates in a Last In, First Out (LIFO) order.
+        /// Tests that the Push and Pop methods of the queue work in Last In, First Out (LIFO) order.
         /// </summary>
         /// <remarks>
-        /// This test pushes three integers onto the queue and then pops them off,
-        /// asserting that they are returned in reverse order of their addition.
+        /// This test method pushes three integers onto the queue and then pops them off.
+        /// It asserts that the last pushed integer is the first to be popped off,
+        /// ensuring the queue behaves as expected in a LIFO manner.
         /// </remarks>
         [TestMethod]
         public void PushAndPop_ShouldWorkInLIFOOrder()
@@ -349,13 +348,13 @@ namespace LinearDataStructures.UnitTest
 
         // 19. Test Clear after Push and Enqueue operations
         /// <summary>
-        /// Tests the <see cref="Queue"/> class's <see cref="Queue.Clear"/> method.
+        /// Tests the <see cref="Queue{T}.Clear"/> method to ensure that it correctly clears the queue
+        /// after elements have been added using both the <see cref="Queue{T}.Enqueue"/> and
+        /// <see cref="Queue{T}.Push"/> methods.
         /// </summary>
         /// <remarks>
-        /// This test verifies that after pushing and enqueuing elements into the queue,
-        /// calling the <see cref="Queue.Clear"/> method results in an empty queue.
-        /// It checks that the <see cref="Queue.IsEmpty"/> property returns true and
-        /// the <see cref="Queue.Count"/> property returns 0.
+        /// This test verifies that after calling <see cref="Queue{T}.Clear"/>, the queue is empty
+        /// and the count of elements is zero.
         /// </remarks>
         [TestMethod]
         public void Clear_ShouldWork_AfterPushAndEnqueue()
@@ -370,19 +369,12 @@ namespace LinearDataStructures.UnitTest
 
         // 20. Test IsEmpty after multiple Push and Dequeue operations
         /// <summary>
-        /// Tests that the queue is empty after multiple push and dequeue operations.
+        /// Tests that the <see cref="_queue"/> is empty after multiple pushes and dequeues.
         /// </summary>
         /// <remarks>
-        /// This test method performs the following operations on the queue:
-        /// <list type="bullet">
-        ///     <item>Pushes the integer 1 onto the queue.</item>
-        ///     <item>Pushes the integer 2 onto the queue.</item>
-        ///     <item>Enqueues the integer 3 into the queue.</item>
-        ///     <item>Dequeues an element from the queue.</item>
-        ///     <item>Dequeues another element from the queue.</item>
-        ///     <item>Pops an element from the queue.</item>
-        /// </list>
-        /// After performing these operations, the method asserts that the queue is empty
+        /// This test method pushes two elements, enqueues one element, and then dequeues two elements
+        /// and pops one element from the queue. It asserts that the queue is empty at the end of these operations.
+        /// </remarks>
         [TestMethod]
         public void IsEmpty_ShouldBeTrue_AfterMultiplePushesAndDequeues()
         {

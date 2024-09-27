@@ -23,9 +23,7 @@ namespace LinearDataStructures.UnitTest
         /// <summary>
         /// Gets the number of items in the collection.
         /// </summary>
-        /// <value>
-        /// The total count of items in the collection.
-        /// </value>
+        /// <value>The total count of items.</value>
         public int Count => _items.Count;
 
         /// <summary>
@@ -33,7 +31,8 @@ namespace LinearDataStructures.UnitTest
         /// </summary>
         /// <remarks>
         /// This method removes all elements from the underlying collection,
-        /// effectively resetting it to an empty state.
+        /// leaving it empty. After calling this method, any attempt to access
+        /// elements in the collection will result in an empty collection.
         /// </remarks>
         public void Clear()
         {
@@ -45,8 +44,8 @@ namespace LinearDataStructures.UnitTest
         /// </summary>
         /// <param name="item">The item to be added to the queue.</param>
         /// <remarks>
-        /// This method follows the queue behavior by adding the specified item
-        /// to the end of the collection.
+        /// This method implements the queue behavior by appending the specified item
+        /// to the end of the internal collection.
         /// </remarks>
         public void Enqueue(T item)
         {
@@ -56,12 +55,8 @@ namespace LinearDataStructures.UnitTest
         /// <summary>
         /// Removes and returns the object at the front of the queue.
         /// </summary>
-        /// <returns>
-        /// The object at the front of the queue.
-        /// </returns>
-        /// <exception cref="InvalidOperationException">
-        /// Thrown when the queue is empty.
-        /// </exception>
+        /// <returns>The object at the front of the queue.</returns>
+        /// <exception cref="InvalidOperationException">Thrown when the queue is empty.</exception>
         public T Dequeue()
         {
             if (IsEmpty)
@@ -78,7 +73,7 @@ namespace LinearDataStructures.UnitTest
         /// </summary>
         /// <param name="item">The item to be added to the stack.</param>
         /// <remarks>
-        /// This method follows the stack behavior by adding the item to the beginning of the collection.
+        /// This method behaves like a stack, adding the item to the beginning of the collection.
         /// </remarks>
         public void Push(T item)
         {
@@ -105,12 +100,8 @@ namespace LinearDataStructures.UnitTest
         /// <summary>
         /// Removes and returns the item at the front of the queue.
         /// </summary>
-        /// <returns>
-        /// The item at the front of the queue.
-        /// </returns>
-        /// <exception cref="InvalidOperationException">
-        /// Thrown when the queue is empty.
-        /// </exception>
+        /// <returns>The item at the front of the queue.</returns>
+        /// <exception cref="InvalidOperationException">Thrown when the queue is empty.</exception>
         public T Pop()
         {
             if (IsEmpty)

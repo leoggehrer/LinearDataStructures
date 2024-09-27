@@ -1,7 +1,7 @@
 namespace LinearDataStructures.Logic
 {
     /// <summary>
-    /// Represents a universal queue that supports both queue and stack operations.
+    /// Represents a universal queue that allows both queue and stack operations.
     /// </summary>
     /// <typeparam name="T">The type of elements in the queue.</typeparam>
     internal class UniversalQueue<T> : IUniversalQueue<T>
@@ -55,7 +55,7 @@ namespace LinearDataStructures.Logic
 
         #region methods
         /// <summary>
-        /// Clears the contents of the data structure by setting the top and bottom references to null.
+        /// Clears the contents of the collection by setting the first and last elements to null.
         /// </summary>
         public void Clear()
         {
@@ -64,7 +64,7 @@ namespace LinearDataStructures.Logic
         }
 
         /// <summary>
-        /// Removes and returns the object at the front of the queue.
+        /// Removes and returns the object at the beginning of the queue.
         /// </summary>
         /// <returns>
         /// The object at the front of the queue.
@@ -94,8 +94,8 @@ namespace LinearDataStructures.Logic
         /// </summary>
         /// <param name="item">The item to be added to the queue.</param>
         /// <remarks>
-        /// If the queue is empty, the item becomes both the top and bottom element.
-        /// Otherwise, the item is added to the end of the queue, and the bottom pointer is updated.
+        /// If the queue is empty, the item becomes both the first and last element.
+        /// If the queue already contains elements, the item is added to the end of the queue.
         /// </remarks>
         public void Enqueue(T item)
         {
@@ -112,11 +112,14 @@ namespace LinearDataStructures.Logic
         }
 
         /// <summary>
-        /// Returns the value of the element at the front of the queue without removing it.
+        /// Retrieves the data at the front of the queue without removing it.
         /// </summary>
-        /// <typeparam name="T">The type of the elements in the queue.</typeparam>
-        /// <returns>The value of the front element in the queue.</returns>
-        /// <exception cref="InvalidOperationException">Thrown when the queue is empty.</exception>
+        /// <returns>
+        /// The data of the first element in the queue.
+        /// </returns>
+        /// <exception cref="InvalidOperationException">
+        /// Thrown when the queue is empty.
+        /// </exception>
         public T Peek()
         {
             if (IsEmpty)
@@ -154,11 +157,12 @@ namespace LinearDataStructures.Logic
         }
 
         /// <summary>
-        /// Adds an item to the top of the stack.
+        /// Adds an item to the front of the collection.
         /// </summary>
-        /// <param name="item">The item to be added to the stack.</param>
+        /// <param name="item">The item to be added to the collection.</param>
         /// <remarks>
-        /// If the stack is empty, the new item becomes both the top and bottom of the stack.
+        /// This method creates a new element containing the specified item and updates the first element of the collection.
+        /// If the collection was previously empty (i.e., <c>_last</c> is null), it also updates the last element to point to the new item.
         /// </remarks>
         public void Push(T item)
         {

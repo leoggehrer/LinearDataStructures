@@ -3,12 +3,9 @@ using LinearDataStructures.Logic;
 namespace LinearDataStructures.UnitTest
 {
     /// <summary>
-    /// Represents a mock stack data structure that implements the <see cref="IStack{T}"/> interface.
+    /// Represents a mock implementation of a stack data structure.
     /// </summary>
     /// <typeparam name="T">The type of elements in the stack.</typeparam>
-    /// <remarks>
-    /// This class provides basic stack operations such as <c>Push</c>, <c>Pop</c>, <c>Peek</c>, and <c>Clear</c>.
-    /// </remarks>
     internal class MockStack<T> : IStack<T>
     {
         private readonly List<T> _items = new List<T>();
@@ -25,9 +22,7 @@ namespace LinearDataStructures.UnitTest
         /// Clears all items from the collection.
         /// </summary>
         /// <remarks>
-        /// This method removes all elements from the underlying collection,
-        /// leaving it empty. After calling this method, the collection will
-        /// contain no items.
+        /// This method removes all elements from the underlying collection, making it empty.
         /// </remarks>
         public void Clear()
         {
@@ -39,7 +34,9 @@ namespace LinearDataStructures.UnitTest
         /// </summary>
         /// <param name="item">The item to be added to the collection.</param>
         /// <remarks>
-        /// This method modifies the internal state of the collection by adding the specified item.
+        /// This method increases the size of the collection by one and does not perform any checks
+        /// for duplicate items or capacity limits. Ensure that the collection can accommodate
+        /// additional items before calling this method.
         /// </remarks>
         public void Push(T item)
         {
@@ -47,7 +44,7 @@ namespace LinearDataStructures.UnitTest
         }
 
         /// <summary>
-        /// Returns the object at the top of the stack without removing it.
+        /// Retrieves the object at the top of the stack without removing it.
         /// </summary>
         /// <returns>
         /// The object at the top of the stack.

@@ -13,16 +13,14 @@ namespace LinearDataStructures.UnitTest
         /// <summary>
         /// Gets the number of items in the collection.
         /// </summary>
-        /// <value>
-        /// The total count of items.
-        /// </value>
+        /// <value>The total count of items.</value>
         public int Count => _items.Count;
 
         /// <summary>
-        /// Clears all items from the collection.
+        /// Clears all the items from the collection.
         /// </summary>
         /// <remarks>
-        /// This method removes all elements from the internal collection, resulting in an empty collection.
+        /// This method removes all elements from the internal storage, resulting in an empty collection.
         /// </remarks>
         public void Clear()
         {
@@ -42,7 +40,7 @@ namespace LinearDataStructures.UnitTest
         /// Removes and returns the object at the front of the queue.
         /// </summary>
         /// <returns>
-        /// The object that is removed from the front of the queue.
+        /// The object at the front of the queue.
         /// </returns>
         /// <exception cref="InvalidOperationException">
         /// Thrown when the queue is empty.

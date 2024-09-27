@@ -3,7 +3,7 @@ namespace LinearDataStructures.Logic
     /// <summary>
     /// Represents a generic stack data structure that follows the Last In First Out (LIFO) principle.
     /// </summary>
-    /// <typeparam name="T">The type of elements in the stack.</typeparam>
+    /// <typeparam name="T">The type of elements stored in the stack.</typeparam>
     internal class Stack<T> : IStack<T>
     {
         #region fields
@@ -30,20 +30,20 @@ namespace LinearDataStructures.Logic
         /// <summary>
         /// Clears the contents of the data structure by setting the top element to null.
         /// </summary>
+        /// <remarks>
+        /// This method effectively removes all elements from the data structure, making it empty.
+        /// </remarks>
         public void Clear()
         {
             _top = null;
         }
 
         /// <summary>
-        /// Returns the object at the top of the stack without removing it.
+        /// Returns the data at the top of the stack without removing it.
         /// </summary>
-        /// <returns>
-        /// The object at the top of the stack.
-        /// </returns>
-        /// <exception cref="InvalidOperationException">
-        /// Thrown when the stack is empty.
-        /// </exception>
+        /// <typeparam name="T">The type of the data stored in the stack.</typeparam>
+        /// <returns>The data at the top of the stack.</returns>
+        /// <exception cref="InvalidOperationException">Thrown when the stack is empty.</exception>
         public T Peek()
         {
             if (IsEmpty)
@@ -55,10 +55,10 @@ namespace LinearDataStructures.Logic
         }
 
         /// <summary>
-        /// Removes and returns the object at the top of the stack.
+        /// Removes and returns the top element of the stack.
         /// </summary>
         /// <returns>
-        /// The object at the top of the stack.
+        /// The data of the top element of the stack.
         /// </returns>
         /// <exception cref="InvalidOperationException">
         /// Thrown when the stack is empty.
@@ -81,8 +81,7 @@ namespace LinearDataStructures.Logic
         /// </summary>
         /// <param name="item">The item to be added to the stack.</param>
         /// <remarks>
-        /// This method creates a new element that holds the specified item and
-        /// links it to the current top of the stack, effectively making it the new top.
+        /// This method creates a new element with the specified item and sets it as the new top of the stack.
         /// </remarks>
         public void Push(T item)
         {

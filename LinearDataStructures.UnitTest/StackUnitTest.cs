@@ -5,10 +5,10 @@ using LinearDataStructures.Logic;
 namespace LinearDataStructures.UnitTest
 {
     /// <summary>
-    /// Contains unit tests for the <see cref="IStack{T}"/> implementation.
-    /// This class tests the behavior of stack operations such as Push, Pop,
-    /// Peek, IsEmpty, and Clear, ensuring they function correctly under
-    /// various conditions.
+    /// Unit tests for the <see cref="IStack{T}"/> implementation, specifically for the <see cref="int"/> type.
+    /// This class contains various test methods to validate the behavior of stack operations such as Push, Pop, Peek,
+    /// IsEmpty, and Clear. Each test method checks specific functionality and expected outcomes to ensure the stack
+    /// operates correctly in various scenarios.
     /// </summary>
     [TestClass]
     public class StackUnitTests
@@ -18,16 +18,16 @@ namespace LinearDataStructures.UnitTest
         /// <summary>
         /// Creates a new instance of a stack of the specified type.
         /// </summary>
-        /// <typeparam name="T">The type of elements in the stack.</typeparam>
-        /// <returns>An instance of <see cref="IStack{T}"/> containing the specified type.</returns>
+        /// <typeparam name="T">The type of elements that the stack will hold.</typeparam>
+        /// <returns>An instance of <see cref="IStack{T}"/> containing elements of type <typeparamref name="T"/>.</returns>
         private static IStack<T> CreateStack<T>()
         {
             return DataStructuresFactory.CreateStack<T>();
         }
 
         /// <summary>
-        /// Initializes the test environment by creating a new instance of a stack for integer values.
-        /// This method is called before each test method is executed.
+        /// Initializes the test environment before each test is run.
+        /// This method sets up a new instance of a stack for testing purposes.
         /// </summary>
         [TestInitialize]
         public void SetUp()
@@ -37,11 +37,11 @@ namespace LinearDataStructures.UnitTest
 
         // 1. Test IsEmpty when stack is newly created
         /// <summary>
-        /// Verifies that a newly created stack is empty.
+        /// Tests that a newly created stack is empty.
         /// </summary>
         /// <remarks>
-        /// This test method checks the <see cref="_stack"/> instance to ensure that the
-        /// <see cref="Stack{T}.IsEmpty"/> property returns true when the stack has just been initialized.
+        /// This test method verifies that the <see cref="_stack"/> instance's <see cref="IsEmpty"/> property returns true
+        /// when the stack has just been instantiated and no elements have been added to it.
         /// </remarks>
         /// <example>
         /// <code>
@@ -57,12 +57,12 @@ namespace LinearDataStructures.UnitTest
 
         // 2. Test IsEmpty after pushing an item
         /// <summary>
-        /// Tests that the stack is not empty after an item is pushed onto it.
+        /// Tests that the <see cref="_stack"/> is not empty after an item is pushed onto it.
         /// </summary>
         /// <remarks>
-        /// This test method pushes an integer onto the stack and asserts that the
-        /// <see cref="_stack.IsEmpty"/> property returns false, indicating that
-        /// the stack contains at least one item.
+        /// This test method verifies that the <see cref="IsEmpty"/> property returns false
+        /// after pushing an integer value onto the stack, indicating that the stack contains
+        /// at least one element.
         /// </remarks>
         [TestMethod]
         public void IsEmpty_ShouldBeFalse_AfterPush()
@@ -73,24 +73,12 @@ namespace LinearDataStructures.UnitTest
 
         // 3. Test IsEmpty after popping the last item
         /// <summary>
-        /// Tests that the stack is empty after the last item has been popped.
+        /// Tests that the stack is empty after the last item is popped.
         /// </summary>
         /// <remarks>
-        /// This test pushes an integer onto the stack, then pops it off, and asserts
-        /// that the stack is empty afterward.
+        /// This test method pushes an integer onto the stack, then pops it off,
+        /// and asserts that the stack is empty afterward.
         /// </remarks>
-        /// <example>
-        /// <code>
-        /// // Example usage in a test suite
-        /// [TestMethod]
-        /// public void TestStackIsEmptyAfterPop()
-        /// {
-        ///     _stack.Push(1);
-        ///     _stack.Pop();
-        ///     Assert.IsTrue(_stack.IsEmpty);
-        /// }
-        /// </code>
-        /// </example>
         [TestMethod]
         public void IsEmpty_ShouldBeTrue_AfterPopLastItem()
         {
@@ -101,10 +89,10 @@ namespace LinearDataStructures.UnitTest
 
         // 4. Test Clear should empty the stack
         /// <summary>
-        /// Tests that the <see cref="_stack"/> is emptied after calling the <see cref="Clear"/> method.
+        /// Tests that the <see cref="_stack"/> is emptied when the <see cref="Clear"/> method is called.
         /// </summary>
         /// <remarks>
-        /// This test pushes two elements onto the stack, clears the stack, and asserts that the stack is empty.
+        /// This test pushes two integers onto the stack, then clears the stack, and asserts that the stack is empty afterwards.
         /// </remarks>
         [TestMethod]
         public void Clear_ShouldEmptyTheStack()
@@ -117,11 +105,11 @@ namespace LinearDataStructures.UnitTest
 
         // 5. Test Push adds item to the stack
         /// <summary>
-        /// Tests that an item can be successfully added to the stack.
+        /// Tests that an item can be added to the stack using the <see cref="Stack{T}.Push(T)"/> method.
         /// </summary>
         /// <remarks>
-        /// This test verifies that after pushing an item onto the stack,
-        /// the top item of the stack is equal to the item that was pushed.
+        /// This test verifies that after pushing an item onto the stack, the <see cref="Stack{T}.Peek()"/> method
+        /// returns the item that was added, confirming that the item is correctly placed on top of the stack.
         /// </remarks>
         [TestMethod]
         public void Push_ShouldAddItemToStack()
@@ -132,11 +120,11 @@ namespace LinearDataStructures.UnitTest
 
         // 6. Test Peek should return the last pushed item
         /// <summary>
-        /// Tests the <see cref="Stack{T}.Peek"/> method to ensure it returns the last pushed item.
+        /// Tests that the <see cref="Stack{T}.Peek"/> method returns the last item pushed onto the stack.
         /// </summary>
         /// <remarks>
-        /// This test pushes two integers onto the stack and verifies that the last item pushed (2)
-        /// is returned by the <see cref="Stack{T}.Peek"/> method.
+        /// This test pushes two integers onto the stack and asserts that the last pushed item (2) is returned
+        /// when calling the <see cref="Stack{T}.Peek"/> method.
         /// </remarks>
         [TestMethod]
         public void Peek_ShouldReturnLastPushedItem()
@@ -151,9 +139,7 @@ namespace LinearDataStructures.UnitTest
         /// Tests that the <see cref="Stack{T}.Peek"/> method does not remove an item from the stack.
         /// </summary>
         /// <remarks>
-        /// This test pushes an integer onto the stack, calls the Peek method,
-        /// and asserts that the stack is not empty afterward, ensuring that
-        /// the Peek operation does not alter the stack's state.
+        /// This test verifies that after calling <see cref="Stack{T}.Peek"/>, the stack remains non-empty.
         /// </remarks>
         [TestMethod]
         public void Peek_ShouldNotRemoveItem()
@@ -168,9 +154,8 @@ namespace LinearDataStructures.UnitTest
         /// Tests that the <see cref="Stack{T}.Pop"/> method returns the last item that was pushed onto the stack.
         /// </summary>
         /// <remarks>
-        /// This test pushes two integers onto the stack and then pops one item off.
-        /// It asserts that the item returned by the pop operation is equal to the last item pushed,
-        /// which in this case is <c>2</c>.
+        /// This test pushes two integers (1 and 2) onto the stack and then verifies that the <see cref="Stack{T}.Pop"/> method
+        /// returns the last pushed item, which should be 2.
         /// </remarks>
         [TestMethod]
         public void Pop_ShouldReturnLastPushedItem()
@@ -182,11 +167,11 @@ namespace LinearDataStructures.UnitTest
 
         // 9. Test Pop removes the item from the stack
         /// <summary>
-        /// Tests that the <see cref="Stack{T}.Pop"/> method removes the last pushed item from the stack.
+        /// Tests that the <see cref="Stack{T}.Pop"/> method removes the last item that was pushed onto the stack.
         /// </summary>
         /// <remarks>
         /// This test pushes two integers onto the stack, then pops the last item.
-        /// It asserts that the top item of the stack is the one that was pushed before the last one.
+        /// It asserts that the next item on the stack is the first integer that was pushed.
         /// </remarks>
         [TestMethod]
         public void Pop_ShouldRemoveLastPushedItem()
@@ -199,12 +184,17 @@ namespace LinearDataStructures.UnitTest
 
         // 10. Test Pop on empty stack throws exception
         /// <summary>
-        /// Tests that an <see cref="InvalidOperationException"/> is thrown when attempting to pop an item from an empty stack.
+        /// Tests that an <see cref="InvalidOperationException"/> is thrown when attempting to pop an element
+        /// from an empty stack.
         /// </summary>
         /// <remarks>
-        /// This test method verifies the behavior of the <see cref="Stack{T}.Pop"/> method when the stack is empty.
-        /// It is expected to throw an <see cref="InvalidOperationException"/> to indicate that the operation is not valid.
+        /// This test verifies the behavior of the <see cref="Stack{T}.Pop"/> method under the condition
+        /// where the stack is empty. The expected outcome is that an <see cref="InvalidOperationException"/>
+        /// is raised, indicating that the operation cannot be performed.
         /// </remarks>
+        /// <exception cref="InvalidOperationException">
+        /// Thrown when the stack is empty and a pop operation is attempted.
+        /// </exception>
         [TestMethod]
         [ExpectedException(typeof(InvalidOperationException))]
         public void Pop_ShouldThrowException_WhenStackIsEmpty()
@@ -217,9 +207,11 @@ namespace LinearDataStructures.UnitTest
         /// Tests that an <see cref="InvalidOperationException"/> is thrown when attempting to
         /// peek at the top element of an empty stack.
         /// </summary>
-        /// <exception cref="InvalidOperationException">
-        /// Thrown when the stack is empty and a peek operation is attempted.
-        /// </exception>
+        /// <remarks>
+        /// This test method verifies the behavior of the <see cref="Stack{T}.Peek"/> method
+        /// when the stack is empty. The expected outcome is that an <see cref="InvalidOperationException"/>
+        /// is thrown, indicating that the operation is invalid due to the empty state of the stack.
+        /// </remarks>
         [TestMethod]
         [ExpectedException(typeof(InvalidOperationException))]
         public void Peek_ShouldThrowException_WhenStackIsEmpty()
@@ -229,10 +221,10 @@ namespace LinearDataStructures.UnitTest
 
         // 12. Test pushing multiple items
         /// <summary>
-        /// Tests that multiple items can be added to the stack using the <see cref="Push"/> method.
+        /// Tests the <see cref="Stack{T}.Push(T)"/> method to ensure that multiple items can be added to the stack.
         /// </summary>
         /// <remarks>
-        /// This test pushes three integers onto the stack and verifies that the top item is the last item added.
+        /// This test pushes three integers onto the stack and then verifies that the top item is the last item pushed.
         /// </remarks>
         [TestMethod]
         public void Push_ShouldAddMultipleItems()
@@ -245,11 +237,11 @@ namespace LinearDataStructures.UnitTest
 
         // 13. Test popping all items should empty the stack
         /// <summary>
-        /// Tests the behavior of the <see cref="_stack"/> when all items are popped from it.
+        /// Tests that popping all items from the stack results in an empty stack.
         /// </summary>
         /// <remarks>
-        /// This test method pushes two items onto the stack, then pops both items off.
-        /// It asserts that the stack is empty after all items have been removed.
+        /// This test pushes two items onto the stack, then pops both of them off.
+        /// It asserts that the stack is empty after the operations are completed.
         /// </remarks>
         [TestMethod]
         public void Pop_AllItems_ShouldEmptyStack()
@@ -263,10 +255,12 @@ namespace LinearDataStructures.UnitTest
 
         // 14. Test Clear does not throw exception when stack is already empty
         /// <summary>
-        /// Tests that calling the <see cref="Clear"/> method on an empty stack does not throw an exception.
+        /// Tests that the <see cref="Stack{T}.Clear"/> method does not throw an exception
+        /// when the stack is empty.
         /// </summary>
         /// <remarks>
-        /// This test verifies that the stack remains empty after the <see cref="Clear"/> method is invoked.
+        /// This test verifies that invoking the <see cref="Stack{T}.Clear"/> method
+        /// on an empty stack maintains the stack's empty state without any exceptions.
         /// </remarks>
         [TestMethod]
         public void Clear_ShouldNotThrowException_WhenStackIsEmpty()
@@ -277,13 +271,22 @@ namespace LinearDataStructures.UnitTest
 
         // 15. Test Pop returns items in LIFO order
         /// <summary>
-        /// Tests the <see cref="Stack{T}.Pop"/> method to ensure that items are returned in Last In, First Out (LIFO) order.
+        /// Tests that the <see cref="_stack"/> correctly returns items in Last In, First Out (LIFO) order.
         /// </summary>
         /// <remarks>
-        /// This test pushes three integers onto the stack and then pops them off, verifying that the order of retrieval
-        /// is the reverse of the order of insertion. Specifically, it checks that the last item pushed (3) is the first
-        /// to be popped, followed by the second (2), and finally the first item pushed (1).
+        /// This test pushes three integers onto the stack and then pops them off,
+        /// asserting that they are returned in the reverse order of their addition.
         /// </remarks>
+        /// <example>
+        /// <code>
+        /// _stack.Push(1);
+        /// _stack.Push(2);
+        /// _stack.Push(3);
+        /// Assert.AreEqual(3, _stack.Pop()); // Should return 3
+        /// Assert.AreEqual(2, _stack.Pop()); // Should return 2
+        /// Assert.AreEqual(1, _stack.Pop()); // Should return 1
+        /// </code>
+        /// </
         [TestMethod]
         public void Pop_ShouldReturnItemsInLIFOOrder()
         {
@@ -297,20 +300,13 @@ namespace LinearDataStructures.UnitTest
 
         // 16. Test Peek does not change the state of the stack
         /// <summary>
-        /// Tests the <see cref="Stack{T}.Peek"/> method to ensure that it returns the top item
-        /// of the stack without modifying the stack's state.
+        /// Tests the <see cref="Stack{T}.Peek"/> method to ensure that it does not change the state of the stack.
         /// </summary>
         /// <remarks>
-        /// This test verifies that after calling <see cref="Stack{T}.Peek"/>, the stack remains unchanged.
+        /// This test pushes an item onto the stack, then calls <see cref="Stack{T}.Peek"/> to retrieve the top item.
+        /// It verifies that the returned item is the expected value and that the stack's state remains unchanged
+        /// after the peek operation.
         /// </remarks>
-        /// <example>
-        /// <code>
-        /// _stack.Push(1);
-        /// var item = _stack.Peek();
-        /// Assert.AreEqual(1, item);
-        /// Assert.AreEqual(1, _stack.Peek());  // Stack should remain the same
-        /// </code>
-        /// </example>
         [TestMethod]
         public void Peek_ShouldNotChangeStackState()
         {
@@ -322,12 +318,13 @@ namespace LinearDataStructures.UnitTest
 
         // 17. Test pushing null item (if nullable type is allowed)
         /// <summary>
-        /// Tests that a <see cref="IStack{T}"/> implementation allows pushing a null value
-        /// when the type is nullable.
+        /// Tests that the <see cref="IStack{T}.Push"/> method allows null values
+        /// when the type parameter is a nullable type.
         /// </summary>
         /// <remarks>
-        /// This test verifies that the stack can accept null as a valid value for a nullable type
-        /// and that the <see cref="IStack{T}.Peek"/> method returns null after pushing a null value.
+        /// This test verifies that when a null value is pushed onto the stack,
+        /// the <see cref="IStack{T}.Peek"/> method returns null, indicating
+        /// that the stack correctly accommodates null values for nullable types.
         /// </remarks>
         [TestMethod]
         public void Push_ShouldAllowNull_WhenTypeIsNullable()
@@ -343,9 +340,12 @@ namespace LinearDataStructures.UnitTest
         /// from the stack after it has been cleared.
         /// </summary>
         /// <remarks>
-        /// This test first pushes an item onto the stack, then clears the stack, and finally attempts to
-        /// pop an item from the now-empty stack, which should result in an exception being thrown.
+        /// This test first pushes an item onto the stack, then clears the stack, and finally attempts
+        /// to pop an item, which should result in an exception being thrown.
         /// </remarks>
+        /// <exception cref="InvalidOperationException">
+        /// Thrown when the <see cref="Pop"/> method is called on an empty stack.
+        /// </exception>
         [TestMethod]
         [ExpectedException(typeof(InvalidOperationException))]
         public void Pop_ShouldThrowException_AfterClear()
@@ -357,14 +357,16 @@ namespace LinearDataStructures.UnitTest
 
         // 19. Test Peek after Clear throws exception
         /// <summary>
-        /// Tests that an <see cref="InvalidOperationException"/> is thrown when
-        /// attempting to peek at the top element of the stack after it has been cleared.
+        /// Tests that an <see cref="InvalidOperationException"/> is thrown when attempting to
+        /// peek at the top element of the stack after it has been cleared.
         /// </summary>
         /// <remarks>
-        /// This method first pushes an integer onto the stack, then clears the stack,
-        /// and finally attempts to peek at the top element, which should result in an
-        /// <see cref="InvalidOperationException"/> being thrown.
+        /// This test method first pushes an integer onto the stack, then clears the stack,
+        /// and finally attempts to peek at the top element, which should result in an exception.
         /// </remarks>
+        /// <exception cref="InvalidOperationException">
+        /// Thrown when the stack is empty and a peek operation is attempted.
+        /// </exception>
         [TestMethod]
         [ExpectedException(typeof(InvalidOperationException))]
         public void Peek_ShouldThrowException_AfterClear()
@@ -376,11 +378,12 @@ namespace LinearDataStructures.UnitTest
 
         // 20. Test pushing items after Clear works correctly
         /// <summary>
-        /// Tests that the <see cref="_stack"/> can successfully push a new element after it has been cleared.
+        /// Tests that the <see cref="_stack"/> can successfully push an element after it has been cleared.
         /// </summary>
         /// <remarks>
-        /// The test first pushes the value 1 onto the stack, then clears the stack, and finally pushes the value 2.
-        /// It asserts that the top element of the stack is now 2, verifying that the stack behaves correctly after being cleared.
+        /// This test method first pushes an integer value onto the stack,
+        /// then clears the stack, and subsequently pushes another integer value.
+        /// It asserts that the top element of the stack is the value that was pushed after the clear operation.
         /// </remarks>
         [TestMethod]
         public void Push_ShouldWorkAfterClear()
